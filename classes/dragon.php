@@ -8,7 +8,7 @@ class dragon extends personnage
     {//herite du constructeur parent
         parent::__construct();
         echo parent::TYPE;
-//        echo self::TYPE; si const dans la class mêmee
+//        echo self::TYPE; si const dans la classes mêmee
         //et on peut surcharger le constructeur avec des propriétés propres
         $this->setLife(500);
         $this->setNom("Votre dragon");
