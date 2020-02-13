@@ -7,12 +7,35 @@ class personnage
     protected $y = 0;
     protected $actionsList = [];
     protected $nom;
+    protected $life;
 
-    //propriété nom et définir un guetter et un setteur
+
 
     public function __construct()
     {
+        $this->setNom("Votre personnage");
+        $this->setLife(100);
 
+    }
+
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+
+    public function setLife($life)
+    {
+        $this->life = $life;
+    }
+
+    public function getLife()
+    {
+        return $this->life;
     }
 
     public function moveUp()
@@ -71,7 +94,7 @@ class personnage
 
     private function addAction()
     {
-        $this->actionsList[] = "Votre personnage se déplace en ".$this->x."/".$this->y;
+        $this->actionsList[] = $this->nom.' se déplace en '.$this->x.'/'.$this->y;
     }
 
 }

@@ -3,6 +3,14 @@
 
 class dragon extends personnage
 {
+    protected $nom = "Dragon";
+
+    public function __construct()
+    {//herite du constructeur parent
+        parent::__construct();
+        //et on peut surcharger le constructeur avec des propriétés propres
+        $this->setLife(500);
+    }
 
 
     private function addAction()
