@@ -8,6 +8,10 @@ class personnage
     protected $actionsList = [];
     protected $nom;
     protected $life;
+    const MIN_POSITION =0;
+    const MAX_POSITION =10;
+    const TYPE = "Dragon Bleu";
+
 
 
 
@@ -16,6 +20,32 @@ class personnage
         $this->setNom("Votre personnage");
         $this->setLife(100);
 
+
+    }
+
+    protected function setX($value)
+    {
+        if($value >= self::MIN_POSITION and $value <= self::MAX_POSITION){
+            $this->x = $value;
+        }
+    }
+
+    protected function getX(): int
+    {
+        return $this->x;
+    }
+
+
+    protected function setY($value)
+    {
+        if($value >= self::MIN_POSITION and $value <= self::MAX_POSITION){
+            $this->y = $value;
+        }
+    }
+
+    public function getY(): int
+    {
+        return $this->y;
     }
 
     public function getNom()
@@ -40,8 +70,8 @@ class personnage
 
     public function moveUp()
     {
-        if ($this->checkMovey()) {
-            $this->y -= 1;
+        if ($this->checkMoveY()) {
+            $this->setY($this->y -1);
             $this->addAction();
         }
 
@@ -49,8 +79,8 @@ class personnage
 
     public function moveLeft()
     {
-        if ($this->checkMovex()) {
-            $this->x -= 1;
+        if ($this->checkMoveX()) {
+            $this->setX($this->x -1);
             $this->addAction();
         }
 
@@ -58,14 +88,18 @@ class personnage
 
     public function moveRight()
     {
-        $this->x += 1;
-        $this->addAction();
+        if ($this->checkMoveX()) {
+            $this->setX($this->x +1);
+            $this->addAction();
+        }
     }
 
     public function moveDown()
     {
-        $this->y += 1;
-        $this->addAction();
+        if ($this->checkMoveY()) {
+            $this->setY($this->y +1);
+            $this->addAction();
+        }
     }
 
     public function getPosition()
@@ -75,16 +109,14 @@ class personnage
             "y" => $this->y];
     }
 
-    private function checkMovex()
-
+    private function checkMoveX()
     {
-        return ($this->x > 0);
+        return ($this->x >= self::MIN_POSITION and $this->x <= self::MAX_POSITION);
     }
 
-    private function checkMovey()
-
+    private function checkMoveY()
     {
-        return ($this->y > 0);
+        return ($this->y >= self::MIN_POSITION and $this->y <= self::MAX_POSITION);
     }
 
     public function getActions()
@@ -92,7 +124,7 @@ class personnage
         return $this->actionsList;
     }
 
-    private function addAction()
+    public function addAction()
     {
         $this->actionsList[] = $this->nom.' se déplace en '.$this->x.'/'.$this->y;
     }
