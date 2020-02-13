@@ -9,8 +9,9 @@ class personnage
     protected $nom;
     protected $life;
     const MIN_POSITION =0;
-    const MAX_POSITION =10;
+    const MAX_POSITION =300;
     const TYPE = "Dragon Bleu";
+    protected static $numInstances = 0;
 
 
 
@@ -19,9 +20,11 @@ class personnage
     {
         $this->setNom("Votre personnage");
         $this->setLife(100);
-
+        self::$numInstances++;
 
     }
+
+
 
     protected function setX($value)
     {
@@ -66,6 +69,17 @@ class personnage
     public function getLife()
     {
         return $this->life;
+    }
+
+
+    public static function setNumInstances( $numInstances)
+    {
+        self::$numInstances = $numInstances;
+    }
+
+    public static function getNumInstances()
+    {
+        return self::$numInstances;
     }
 
     public function moveUp()
