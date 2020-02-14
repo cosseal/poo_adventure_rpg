@@ -1,12 +1,12 @@
 <?php
 
+include "traits/personnageUtils.php";
+
 require "classes/personnage.php";
 require "classes/dragon.php";
-require "classes/Class1.php";
-require "classes/Classe2.php";
+//les traits
 
-use classes\maClasse as Class1;
-use classes2\maClasse as Classe2;
+
 
 ///à ne pas faire, la session...juste pour que l'exemple fonctionne ici
 session_start();
@@ -22,11 +22,7 @@ else {
 
 }
 $personnage->addAction();
-
-$class1 = new Class1;
-$class2 = new Classe2;
-$class1->test();
-$class2->test();
+//$personnage->test();
 
 
 
@@ -41,16 +37,20 @@ $class2->test();
 
 
 $dragon =new dragon();
-new dragon();
+$dragon->placeRandom();
+print_r($dragon->getPosition());
+
 //on peut accéder à une constante parente mais pas lui donnerune nouvelle valeur
 //echo $dragon->TYPE; ne fonctionne pas
 //echo $dragon::TYPE;
 
-$dragon->testAction();
-
+//$dragon->testAction();
+//
 print_r($dragon->getActions());
 
 echo personnage::getNumInstances();
+
+
 
 include"controllers/main.php";
 

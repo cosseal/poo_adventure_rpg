@@ -3,6 +3,9 @@
 
 class personnage
 {
+    use personnageUtils; //nom du trait, pas du fichier....on peut utiliser plusieurs traits dans une seule class
+    //pour injecter du code, quelques petites méthodes génériques.
+
     protected $x = 0;
     protected $y = 0;
     protected $actionsList = [];
