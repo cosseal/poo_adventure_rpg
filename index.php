@@ -2,8 +2,10 @@
 
 include "traits/personnageUtils.php";
 
+require "classes/PersonnageInterface.php";
 require "classes/personnage.php";
 require "classes/dragon.php";
+
 //les traits
 
 

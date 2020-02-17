@@ -1,7 +1,7 @@
 <?php
 
 
-class personnage
+class personnage implements PersonnageInterface
 {
     use personnageUtils; //nom du trait, pas du fichier....on peut utiliser plusieurs traits dans une seule class
     //pour injecter du code, quelques petites méthodes génériques.
@@ -26,7 +26,6 @@ class personnage
         self::$numInstances++;
 
     }
-
 
 
     protected function setX($value)
@@ -144,6 +143,11 @@ class personnage
     public function addAction()
     {
         $this->actionsList[] = $this->nom.' se déplace en '.$this->x.'/'.$this->y;
+    }
+
+    public function escape()
+    {
+        // TODO: Implement escape() method.
     }
 
 }
